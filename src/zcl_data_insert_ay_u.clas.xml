@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>ZCL_G1_HELLO_WORLD</CLSNAME>
+    <CLSNAME>ZCL_DATA_INSERT_AY_U</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Simple Hello World</DESCRIPT>
+    <DESCRIPT>Keeping 100 records in the table</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

@@ -67,7 +67,7 @@ CLASS lhc_Travel IMPLEMENTATION.
           is_travel   = CORRESPONDING /dmo/s_travel_in( ls_travel_in )
 *         it_booking  =
 *         it_booking_supplement =
-*         iv_numbering_mode     =
+         iv_numbering_mode     =  /dmo/if_flight_legacy=>numbering_mode-late
         IMPORTING
           es_travel   = ls_travel_out
 *         et_booking  =
