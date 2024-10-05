@@ -38,15 +38,17 @@ CLASS lsc_ZI_TRAVEL_AY_U IMPLEMENTATION.
 
     mapped-travel  = VALUE #(
                               FOR lwa_travel IN lt_travel_mapping (
-                                                                      %tmp-TravelId = lwa_travel-preliminary-travel_id
+                                                                      %tmp = VALUE #( TravelId = lwa_travel-preliminary-travel_id )
                                                                       TravelId      = lwa_travel-final-travel_id
                                                                   )
                             ).
 
     mapped-booking = VALUE #(
                                FOR lwa_booking IN lt_booking_mapping (
-                                                                         %tmp-TravelId  = lwa_booking-preliminary-travel_id
-                                                                         %tmp-BookingId = lwa_booking-preliminary-booking_id
+                                                                         %tmp = VALUE #(
+                                                                                         TravelId  = lwa_booking-preliminary-travel_id
+                                                                                         BookingId = lwa_booking-preliminary-booking_id
+                                                                                       )
                                                                          TravelId       = lwa_booking-final-travel_id
                                                                          BookingId      = lwa_booking-final-booking_id
                                                                       )
