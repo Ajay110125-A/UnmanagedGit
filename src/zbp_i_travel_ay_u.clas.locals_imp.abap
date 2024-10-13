@@ -26,15 +26,16 @@ CLASS lsc_ZI_TRAVEL_AY_U IMPLEMENTATION.
   METHOD adjust_numbers.
 
     DATA : lt_travel_mapping       TYPE /dmo/if_flight_legacy=>tt_ln_travel_mapping,
-           lt_booking_mapping      TYPE /dmo/if_flight_legacy=>tt_ln_booking_mapping,
-           lt_bookingsuppl_mapping TYPE /dmo/if_flight_legacy=>tt_ln_bookingsuppl_mapping.
+           lt_booking_mapping      TYPE /dmo/if_flight_legacy=>tt_ln_booking_mapping.
+*           lt_bookingsuppl_mapping TYPE /dmo/if_flight_legacy=>tt_ln_bookingsuppl_mapping.
 
 
     CALL FUNCTION '/DMO/FLIGHT_TRAVEL_ADJ_NUMBERS'
       IMPORTING
         et_travel_mapping       = lt_travel_mapping
         et_booking_mapping      = lt_booking_mapping
-        et_bookingsuppl_mapping = lt_bookingsuppl_mapping.
+*        et_bookingsuppl_mapping = lt_bookingsuppl_mapping
+        .
 
     mapped-travel  = VALUE #(
                               FOR lwa_travel IN lt_travel_mapping (

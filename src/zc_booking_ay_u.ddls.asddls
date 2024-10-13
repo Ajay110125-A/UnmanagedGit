@@ -19,12 +19,8 @@ define view entity ZC_BOOKING_AY_U
       @Semantics.amount.currencyCode: 'CurrencyCode'
       FlightPrice,
       CurrencyCode,
-      @ObjectModel.text.element: [ 'BookingStatusText' ]
-      BookingStatus,
-      _BookingStatus._Text.Text as BookingStatusText : localized,
 //      LastChangedAt,
       /* Associations */
-      _BookingStatus,
       _Carrier,
       _Connection,
       _Customer,

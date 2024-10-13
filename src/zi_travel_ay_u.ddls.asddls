@@ -7,7 +7,7 @@
     sizeCategory: #M
 }
 define root view entity ZI_TRAVEL_AY_U
-  as select from zay_travel_m
+  as select from /dmo/travel
   composition [0..*] of ZI_BOOKING_AY_U          as _Booking
   association [0..1] to /DMO/I_Agency            as _Agency   on $projection.AgencyId = _Agency.AgencyID
   association [0..1] to /DMO/I_Customer          as _Customer on $projection.CustomerId = _Customer.CustomerID
@@ -25,15 +25,15 @@ define root view entity ZI_TRAVEL_AY_U
       total_price     as TotalPrice,
       currency_code   as CurrencyCode,
       description     as Description,
-      overall_status  as OverallStatus,
+      status  as OverallStatus,
       @Semantics.user.createdBy: true
-      created_by      as CreatedBy,
+      createdby      as CreatedBy,
       @Semantics.systemDateTime.createdAt: true
-      created_at      as CreatedAt,
+      createdat      as CreatedAt,
       @Semantics.user.lastChangedBy: true
-      last_changed_by as LastChangedBy,
+      lastchangedby as LastChangedBy,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      last_changed_at as LastChangedAt,
+      lastchangedat as LastChangedAt,
 
       //  Compostion
       _Booking,
@@ -44,3 +44,5 @@ define root view entity ZI_TRAVEL_AY_U
       _Currency,
       _Status
 }
+
+
