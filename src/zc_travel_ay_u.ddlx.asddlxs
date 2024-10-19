@@ -33,10 +33,17 @@ annotate entity ZC_TRAVEL_AY_U with
                       position: 10,
                       importance: #HIGH
                    }],
-          identification: [{ position: 10 }]
+         selectionField: [{  position: 10 }],
+         identification: [{ position: 10 }]
       }
   @Search.defaultSearchElement: true
   @Search.fuzzinessThreshold: 0.7
+//  @Consumption.valueHelpDefinition: [{
+//                                       entity:{
+//                                                  name: '/dmo/travel',
+//                                                  element: 'travel_id'
+//                                              }
+//                                    }]
   TravelId;
 
   @UI:{
@@ -122,27 +129,27 @@ annotate entity ZC_TRAVEL_AY_U with
       }
   @Search.defaultSearchElement: true
   @Search.fuzzinessThreshold: 0.7
-  @Consumption.valueHelpDefinition: [{  
-                                        entity:{ 
+  @Consumption.valueHelpDefinition: [{
+                                        entity:{
                                                  name: '/DMO/I_Overall_Status_VH',
                                                  element: 'OverallStatus'
                                                }
                                     }]
   OverallStatus;
-  
+
   @UI.hidden: true
   OverallStatusText;
-//  CreatedBy;
-//  CreatedAt;
-//  LastChangedBy;
-  
+  //  CreatedBy;
+  //  CreatedAt;
+  //  LastChangedBy;
+
   @UI.hidden: true
   LastChangedAt;
   /* Associations */
-//  _Agency;
-//  _Booking;
-//  _Currency;
-//  _Customer;
-//  _Status;
+  //  _Agency;
+  //  _Booking;
+  //  _Currency;
+  //  _Customer;
+  //  _Status;
 
 }

@@ -33,7 +33,8 @@ CLASS lhc_Travel DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS map_messages
       IMPORTING
-        cid          TYPE abp_behv_cid
+        cid          TYPE abp_behv_cid OPTIONAL
+        travel_id    TYPE /dmo/travel_id OPTIONAL
         messages     TYPE /dmo/t_message
       EXPORTING
         failed_added TYPE abap_boolean
@@ -64,15 +65,15 @@ CLASS lhc_Travel IMPLEMENTATION.
 
       CALL FUNCTION '/DMO/FLIGHT_TRAVEL_CREATE'
         EXPORTING
-          is_travel   = CORRESPONDING /dmo/s_travel_in( ls_travel_in )
-*         it_booking  =
+          is_travel         = CORRESPONDING /dmo/s_travel_in( ls_travel_in )
+*         it_booking        =
 *         it_booking_supplement =
-         iv_numbering_mode     =  /dmo/if_flight_legacy=>numbering_mode-late
+          iv_numbering_mode = /dmo/if_flight_legacy=>numbering_mode-late
         IMPORTING
-          es_travel   = ls_travel_out
-*         et_booking  =
+          es_travel         = ls_travel_out
+*         et_booking        =
 *         et_booking_supplement =
-          et_messages = lt_messages.
+          et_messages       = lt_messages.
 
 
       map_messages(
@@ -101,6 +102,48 @@ CLASS lhc_Travel IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD update.
+
+    DATA: ls_travel     TYPE /dmo/travel,
+          ls_travel_inx TYPE /dmo/s_travel_inx,
+          lt_messages   TYPE /dmo/t_message.
+
+    LOOP AT entities ASSIGNING FIELD-SYMBOL(<travel_update>).
+
+
+      ls_travel = CORRESPONDING #( <travel_update> MAPPING FROM ENTITY ).
+
+      ls_travel_inx-travel_id = <travel_update>-%key-TravelId.
+
+      ls_travel_inx-_intx = CORRESPONDING #( <travel_update> MAPPING FROM ENTITY ).
+
+      CALL FUNCTION '/DMO/FLIGHT_TRAVEL_UPDATE'
+        EXPORTING
+          is_travel   = CORRESPONDING /dmo/s_travel_in( ls_travel )
+          is_travelx  = ls_travel_inx
+*         it_booking  =
+*         it_bookingx =
+*         it_booking_supplement  =
+*         it_booking_supplementx =
+        IMPORTING
+*         es_travel   =
+*         et_booking  =
+*         et_booking_supplement  =
+          et_messages = lt_messages.
+
+      map_messages(
+        EXPORTING
+          cid          = <travel_update>-%cid_ref
+          travel_id    = <travel_update>-%key-TravelId
+          messages     = lt_messages
+*            IMPORTING
+*              failed_added =
+        CHANGING
+          failed       = failed-travel
+          reported     = reported-travel
+      ).
+
+    ENDLOOP.
+
   ENDMETHOD.
 
   METHOD delete.
@@ -129,6 +172,7 @@ CLASS lhc_Travel IMPLEMENTATION.
         failed_added = abap_true.
         APPEND VALUE #(
                             %cid = cid
+                            travelid = travel_id
                             %fail-cause = zcl_travel_aux_aj_u=>get_cause_message_from(
                                             msgid        = ls_messages-msgid
                                             msgno        = ls_messages-msgno
@@ -138,6 +182,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
         APPEND VALUE #(
                          %cid = cid
+                         travelid = travel_id
                          %msg = new_message(
                                 id       = ls_messages-msgid
                                 number   = ls_messages-msgno
