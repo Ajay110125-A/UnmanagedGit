@@ -146,18 +146,18 @@ annotate entity ZC_BOOKING_AY_U with
   CurrencyCode;
   
   
-  @UI:{
-        lineItem: [{  position: 80, importance: #HIGH }],
-        identification: [{  position: 80 }],
-        textArrangement: #TEXT_FIRST
-      }
-  @Consumption.valueHelpDefinition: [{  
-                                        entity:{ 
-                                                 name: '/DMO/I_Booking_Status_VH',
-                                                 element: 'BookingStatus'
-                                               }
-                                    }]
-  BookingStatus;
+//  @UI:{
+//        lineItem: [{  position: 80, importance: #HIGH }],
+//        identification: [{  position: 80 }],
+//        textArrangement: #TEXT_FIRST
+//      }
+//  @Consumption.valueHelpDefinition: [{  
+//                                        entity:{ 
+//                                                 name: '/DMO/I_Booking_Status_VH',
+//                                                 element: 'BookingStatus'
+//                                               }
+//                                    }]
+//  BookingStatus;
 //  BookingStatusText;
 //  LastChangedAt;
 //  /* Associations */
