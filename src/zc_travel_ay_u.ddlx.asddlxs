@@ -136,10 +136,14 @@ annotate entity ZC_TRAVEL_AY_U with
                                                }
                                     }]
   OverallStatus;
-
+  
+  @UI:{
+        selectionField: [{  position: 40 }]
+      }
+  CreatedBy;
   @UI.hidden: true
   OverallStatusText;
-  //  CreatedBy;
+
   //  CreatedAt;
   //  LastChangedBy;
 

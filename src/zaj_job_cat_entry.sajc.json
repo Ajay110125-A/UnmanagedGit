@@ -1,0 +1,16 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Job Catelog Entry",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "className": "ZDMO_CL_RAP_GEN_IN_BACKGROUND"
+  },
+  "parameters": [
+    {
+      "name": "BO_NAME"
+    }
+  ]
+}
