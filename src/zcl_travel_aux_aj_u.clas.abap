@@ -20,7 +20,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_travel_aux_aj_u IMPLEMENTATION.
+CLASS ZCL_TRAVEL_AUX_AJ_U IMPLEMENTATION.
+
+
   METHOD get_cause_message_from.
 
     fail_cause = if_abap_behv=>cause-unspecific.
@@ -44,5 +46,4 @@ CLASS zcl_travel_aux_aj_u IMPLEMENTATION.
 
     ENDIF.
   ENDMETHOD.
-
 ENDCLASS.

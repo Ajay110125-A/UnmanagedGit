@@ -1,5 +1,9 @@
 CLASS zbp_i_travel_ay_u DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_travel_ay_u.
+protected section.
+private section.
 ENDCLASS.
 
-CLASS zbp_i_travel_ay_u IMPLEMENTATION.
+
+
+CLASS ZBP_I_TRAVEL_AY_U IMPLEMENTATION.
 ENDCLASS.
